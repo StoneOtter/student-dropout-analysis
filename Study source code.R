@@ -102,6 +102,15 @@ plot(data$Age.at.enrollment,
 # Normality test ----
 shapiro.test(data$Admission.grade)
 
+# Parametric Test: Pearson Correlation ----
+# Test the relationship between Age at Enrollment and Admission Grade
+cor.test(data$Age.at.enrollment,
+         data$Admission.grade,
+         method="pearson")
+
+# Non-Parametric Test: Chi-Square Test ----
+# Test the association between Gender and Student Outcome
+chisq.test(table(data$Gender, data$Target))
 
 # Interpretation ----
 # If p-value > 0.05
@@ -109,3 +118,6 @@ shapiro.test(data$Admission.grade)
 
 # If p-value < 0.05
 # Data is NOT normally distributed
+
+# Since p-value < 0.05, we reject the null hypothesis of normality.
+# Therefore, Admission Grade is not normally distributed.
